@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 
 function HookCallback() {
 
@@ -28,7 +28,8 @@ function HookCallback() {
     );
 }
 
-function Child( {increase } ) {
+//불필요한 렌더링이 발생하는 자식컴포넌트는 React.memo로 묶어주어야함
+const Child = React.memo(({ increase }) => {
 
     console.log("부모에서 클릭 or 자식에서 클릭 할때 렌더링이 발생함.");
 
@@ -38,6 +39,6 @@ function Child( {increase } ) {
             <button type="button" onClick={increase}>증가</button>
         </>
     );
-}
+})
 
 export default HookCallback;
